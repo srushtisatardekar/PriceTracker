@@ -33,9 +33,9 @@
                                 echo "<thead>";
                                     echo "<tr>";
                                         //echo "<th>#</th>";                                        
-                                        echo "<th>Prod_id</th>";
-                                        echo "<th>Description</th>";
-                                        echo "<th>Vendor</th>";
+                                        echo "<th>Date</th>";
+                                        echo "<th>Time</th>";
+                                        echo "<th>Price</th>";
                                         //echo "<th>URL</th>";
                                         echo "<th>Action</th>";
                                         
@@ -51,7 +51,6 @@
                                         //echo "<td>" . $row['URL'] . "</td>";
                                         echo "<td>";
                                         echo "<a href='". $row['URL'] ."'> VIEW </a>";
-                                        
                                         //echo "<a href='index.php?act=add&id=". $row['VENDOR'] ."' title='Add to wishlist' data-toggle='tooltip'><i class='fa fa-edit'></i></a>";
 
                                         echo "</td>";

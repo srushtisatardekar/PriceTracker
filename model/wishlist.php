@@ -24,7 +24,7 @@ class wishlist
         $Wishlist_id=0;$Description=$Prod_id=$Description=$Vendor=$URL="";
         $Wishlist_id_msg=$Description_msg=$Prod_id_msg=$Description_msg=$Vendor_msg=$URL_msg="";
 
-        
+
     }
 }
 ?>

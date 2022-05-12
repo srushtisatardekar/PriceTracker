@@ -1,6 +1,6 @@
 <?php
     require 'model/productsModel.php';
-    require 'model/products.php';
+    // require 'model/products.php';
 	require 'model/wishlist.php';
     
 
@@ -23,8 +23,8 @@
 			$act = isset($_GET['act']) ? $_GET['act'] : NULL;
 			switch ($act) 
 			{
-                // case 'add' :                    
-				// 	$this->insert();
+                 case 'Track_Hourly' :                    
+					$this->TrackByHourAll();
 				// 	break;						
 				// case 'update':
 				// 	$this->update();
@@ -33,8 +33,8 @@
 				// 	$this -> wishlist();
 				// 	break;								
 				default:
-                   //$this->list();
-				   $this->wishlist();
+                   $this->list();
+				   //$this->TrackByHourAll();
 			}
 		}		
         // page redirection
@@ -50,6 +50,11 @@
 		public function wishlist(){
             $result=$this->objsm->selectWishlistRecord("sathya"); //taking username
             include "view/wishlist.php";                                        
+        }
+
+		public function TrackByHourAll(){
+            $result=$this->objsm->TrackByHourAllRecord("sathya"); //taking username
+            include "view/trackerAll.php";                                        
         }
 
     }

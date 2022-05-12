@@ -112,6 +112,45 @@ class productsModel
 			}
 			
 		}
+
+        public function TrackByHourAllRecord($User_name){
+            try
+			{
+                $this->open_db();
+                //if($User_name!= )
+                if(TRUE)
+				{	
+				$query=$this->condb->prepare('SELECT Date(timestamp) as date, concat( TIME_FORMAT(time(TIMESTAMP),"%H") ," Hr") as time , price
+                FROM
+                    `price_tracker`
+                WHERE
+                    Prod_id = 1
+                ORDER BY
+                    TIMESTAMP
+                DESC
+                LIMIT 10;
+                ');
+					$query->bind_param("s",$User_name);
+				}
+                else
+                {
+                    echo "Error showing price track by hour";
+                }		
+				
+				$query->execute();
+				$res=$query->get_result();	
+				$query->close();				
+				$this->close_db();                
+                return $res;
+			}
+			catch(Exception $e)
+			{
+				$this->close_db();
+				throw $e; 	
+			}
+
+
+        }
     }
 
 ?>
