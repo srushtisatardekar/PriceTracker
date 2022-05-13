@@ -65,7 +65,7 @@ class productsModel
 		}
 
 
-//display wishlist
+    //display wishlist
         public function selectWishlistRecord($User_name)
 		{
 			try
@@ -113,24 +113,26 @@ class productsModel
 			
 		}
 
-        public function TrackByHourAllRecord($User_name){
+        public function TrackByHourAllRecord($Prod_id)
+        {
             try
 			{
                 $this->open_db();
                 //if($User_name!= )
+                $Prod_id=1;
                 if(TRUE)
 				{	
 				$query=$this->condb->prepare('SELECT Date(timestamp) as date, concat( TIME_FORMAT(time(TIMESTAMP),"%H") ," Hr") as time , price
                 FROM
                     `price_tracker`
                 WHERE
-                    Prod_id = 1
+                    Prod_id = ?
                 ORDER BY
                     TIMESTAMP
                 DESC
                 LIMIT 10;
                 ');
-					$query->bind_param("s",$User_name);
+					$query->bind_param("i",$Prod_id);
 				}
                 else
                 {
@@ -151,6 +153,55 @@ class productsModel
 
 
         }
+
+        public function TrackByDayAllRecord($Prod_id)
+        {
+            try
+			{
+                $this->open_db();
+                $Prod_id=1;
+                //if($User_name!= )
+                if(TRUE)
+				{	
+				$query=$this->condb->prepare('SELECT
+                DATE(TIMESTAMP) AS DATE,
+                MIN(price) AS min_price,
+                MAX(price) AS max_price
+            FROM
+                `price_tracker`
+            WHERE
+                Prod_id = 1
+            GROUP BY
+                prod_id,
+                DATE(TIMESTAMP)
+            ORDER BY
+                TIMESTAMP
+            DESC
+            LIMIT 10
+            
+                ');
+					$query->bind_param("i",$Prod_id);
+				}
+                else
+                {
+                    echo "Error showing price track by hour";
+                }		
+				
+				$query->execute();
+				$res=$query->get_result();	
+				$query->close();				
+				$this->close_db();                
+                return $res;
+			}
+			catch(Exception $e)
+			{
+				$this->close_db();
+				throw $e; 	
+			}
+
+
+        }
+
     }
 
 ?>

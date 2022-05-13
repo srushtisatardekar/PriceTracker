@@ -1,5 +1,4 @@
 <?php session_unset();?>
-<?php include "view/header.php" ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,11 +22,18 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header clearfix">
-                        <a href="index.php" class="btn btn-success pull-left">Home</a>
+                        <!-- <a href="index.php" class="btn btn-success pull-left">Home</a> -->
                         <h2 class="pull-left">Product Details</h2>
-                        <a href="" class="btn btn-success pull-right">View My Wishlist</a>
+                        <a href="view/wishlist.php" class="btn btn-success pull-right">View My Wishlist</a>
+
                     </div>
                     <?php
+                    echo "<a href='index.php?act=wishlist&User_name=". '' ."' class="btn btn-success pull-right">View My Wishlist</a>";
+                
+
+                    //echo "<a href='index.php?act=wishlist&User_name=". '' ."' title='display wishlist' data-toggle='tooltip'><i class='fa fa-edit'></i></a>";
+                    //echo "<a href='index.php?act=wishlist title='display wishlist' data-toggle='tooltip'><i class='fa fa-edit'></i></a>";
+
                         if($result->num_rows > 0){
                             echo "<table class='table table-bordered table-striped'>";
                                 echo "<thead>";
@@ -52,8 +58,10 @@
                                         echo "<td>";
                                         echo "<a href='". $row['URL'] ."'> VIEW </a>";
                                         
-                                        //echo "<a href='index.php?act=add&id=". $row['VENDOR'] ."' title='Add to wishlist' data-toggle='tooltip'><i class='fa fa-edit'></i></a>";
+                                        //add below comment to wishlist display page
+                                        //echo "<a href='index.php?act=Track_Hourly&User_name=". $row['User_name'] ."' title='Track Record Hourly' data-toggle='tooltip'><i class='fa fa-edit'></i></a>";
 
+                                        //echo "<a href='pricebyhour.php'title='Track Hourly data' data-toggle='tooltip'><i class='fa fa-edit'></i></a>";
                                         echo "</td>";
                                         
 

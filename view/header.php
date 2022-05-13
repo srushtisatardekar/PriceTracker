@@ -23,15 +23,15 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="wishlist.php">Wishlist</a>
-      </li>
+      
       <li class="nav-item active">
-        <a class="nav-link" href="products.php">Products <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="index.php">Products <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="track.php">Track Price</a>
+        <a class="nav-link" href="view/wishlist.php">Wishlist</a>
+        
       </li>
+      
      <li class="nav-item">
         <a class="nav-link" href="login.php">Logout</a>
       </li>

@@ -1,5 +1,4 @@
 <?php session_unset();?>
-<?php include "view/header.php" ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,19 +22,21 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header clearfix">
-                        <a href="index.php" class="btn btn-success pull-left">Home</a>
-                        <h2 class="pull-left">Product Details</h2>
-                        <a href="" class="btn btn-success pull-right">View Products</a>
+                        <!-- <a href="index.php" class="btn btn-success pull-left">Home</a> -->
+                        <h2 class="pull-left">Product Tracking by Day</h2>
+                        <a href="view/wishlist.php" class="btn btn-success pull-right">View My Wishlist</a>
+
                     </div>
                     <?php
-                        
+                  
+                        if($result->num_rows > 0){
                             echo "<table class='table table-bordered table-striped'>";
                                 echo "<thead>";
                                     echo "<tr>";
                                         //echo "<th>#</th>";                                        
                                         echo "<th>Date</th>";
-                                        echo "<th>Time</th>";
-                                        echo "<th>Price</th>";
+                                        echo "<th>Min</th>";
+                                        echo "<th>Max</th>";
                                         //echo "<th>URL</th>";
                                         
                                         
@@ -43,10 +44,27 @@
                                     echo "</tr>";
                                 echo "</thead>";
                                 echo "<tbody>";
+                                while($row = mysqli_fetch_array($result)){
+                                    echo "<tr>";
+                                        echo "<td>" . $row['Date'] . "</td>";                                        
+                                        echo "<td>" . $row['Min'] . "</td>";
+                                        echo "<td>" . $row['Max'] . "</td>";
+                                        //echo "<td>" . $row['URL'] . "</td>";
+                                        
+                                        
+                                        
+                                        //echo "<a href='pricebyhour.php'title='Track Hourly data' data-toggle='tooltip'><i class='fa fa-edit'></i></a>";
+                                        echo "</td>";
                                 
+                                    echo "</tr>";
+                                }
                                 echo "</tbody>";                            
                             echo "</table>";
-                        
+                            // Free result set
+                            mysqli_free_result($result);
+                        } else{
+                            echo "<p class='lead'><em>No records were found.</em></p>";
+                        }
                     ?>
                 </div>
             </div>        

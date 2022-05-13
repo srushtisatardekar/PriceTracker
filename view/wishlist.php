@@ -1,5 +1,21 @@
+<?php
+    echo"testig";
+    // require_once '/config.php';
+    // require_once  '/controller/trackerController.php';
+    require_once '/Applications/XAMPP/xamppfiles/htdocs/PT/config.php';
+    require_once  '/Applications/XAMPP/xamppfiles/htdocs/PT/controller/trackerController.php';
+    //session_start();  
+    // $this -> wishlist();
+    echo "<a href='wishlist.php?act=wishlist&User_name=". $row['User_name'] ."' title='display wishlist' data-toggle='tooltip'><i class='fa fa-edit'></i></a>";
+
+
+    //session_status() === PHP_SESSION_ACTIVE ? TRUE : session_start();
+    // $controller = new trackerController();
+    // $controller->mvcHandler();          
+?>
+
 <?php session_unset();?>
-<?php include "view/header.php" ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +34,7 @@
     </script>
 </head>
 <body>
+
     <div class="main-wrapper">
         <div class="container-fluid">
             <div class="row">
@@ -56,8 +73,8 @@
 
 
                                         echo "<td>";
-                                        echo "<a href='https://www.amazon.com/dp/B09FD2QQ61/ref=cm_sw_r_pi_dp_100N2FGX6KDXSZJJ62WY". $row['URL'] ."'> VIEW </a>";
-                                        //echo "<a href='index.php?act=add&id=". $row['VENDOR'] ."' title='Add to wishlist' data-toggle='tooltip'><i class='fa fa-edit'></i></a>";
+                                        echo "<a href='". $row['URL'] ."'> VIEW </a>";
+                                        //echo "<a href='index.php?act=add&Prod_id=". $row['Prod_id'] ."' title='Add to wishlist' data-toggle='tooltip'><i class='fa fa-edit'></i></a>";
 
                                         echo "</td>";
                                         

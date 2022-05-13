@@ -1,10 +1,10 @@
 <?php
-    require 'model/productsModel.php';
-    // require 'model/products.php';
-	require 'model/wishlist.php';
+    require '/Applications/XAMPP/xamppfiles/htdocs/PT/model/productsModel.php';
+    //require 'model/products.php';
+	require '/Applications/XAMPP/xamppfiles/htdocs/PT/model/wishlist.php';
     
 
-    require_once 'config.php';
+    require_once '/Applications/XAMPP/xamppfiles/htdocs/PT/config.php';
 
     session_status() === PHP_SESSION_ACTIVE ? TRUE : session_start();
     
@@ -26,14 +26,15 @@
                  case 'Track_Hourly' :                    
 					$this->TrackByHourAll();
 				// 	break;						
-				// case 'update':
-				// 	$this->update();
+				// case 'Track_Day':
+				// 	$this->TrackByDayAllRecord();
 				// 	break;				
-				// case 'wishlist' :					
-				// 	$this -> wishlist();
+				case 'wishlist' :					
+					$this -> wishlist();
 				// 	break;								
 				default:
-                   $this->list();
+				$this->wishlist();
+                   //$this->TrackByDayAll();
 				   //$this->TrackByHourAll();
 			}
 		}		
@@ -48,13 +49,20 @@
             include "view/list.php";      //product                                  
         }
 		public function wishlist(){
+			
+			echo "in the function wishlist";
             $result=$this->objsm->selectWishlistRecord("sathya"); //taking username
             include "view/wishlist.php";                                        
         }
 
 		public function TrackByHourAll(){
             $result=$this->objsm->TrackByHourAllRecord("sathya"); //taking username
-            include "view/trackerAll.php";                                        
+            include "view/pricebyhour.php";                                        
+        }
+
+		public function TrackByDayAll(){
+            $result=$this->objsm->TrackByDayAllRecord("1"); //taking username
+            include "view/pricebyday.php";                                        
         }
 
     }
