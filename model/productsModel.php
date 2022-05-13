@@ -164,13 +164,13 @@ class productsModel
                 if(TRUE)
 				{	
 				$query=$this->condb->prepare('SELECT
-                DATE(TIMESTAMP) AS DATE,
-                MIN(price) AS min_price,
-                MAX(price) AS max_price
+                DATE(TIMESTAMP) AS Date,
+                MIN(price) AS Min_price,
+                MAX(price) AS Max_price
             FROM
                 `price_tracker`
             WHERE
-                Prod_id = 1
+                Prod_id = ?
             GROUP BY
                 prod_id,
                 DATE(TIMESTAMP)
@@ -184,7 +184,7 @@ class productsModel
 				}
                 else
                 {
-                    echo "Error showing price track by hour";
+                    echo "Error showing price track by day";
                 }		
 				
 				$query->execute();

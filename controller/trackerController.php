@@ -33,8 +33,8 @@
 					$this -> wishlist();
 				// 	break;								
 				default:
-				$this->wishlist();
-                   //$this->TrackByDayAll();
+				//$this->wishlist();
+                   $this->TrackByDayAll();
 				   //$this->TrackByHourAll();
 			}
 		}		
@@ -56,12 +56,12 @@
         }
 
 		public function TrackByHourAll(){
-            $result=$this->objsm->TrackByHourAllRecord("sathya"); //taking username
+            $result=$this->objsm->TrackByHourAllRecord(1); //taking username
             include "view/pricebyhour.php";                                        
         }
 
 		public function TrackByDayAll(){
-            $result=$this->objsm->TrackByDayAllRecord("1"); //taking username
+            $result=$this->objsm->TrackByDayAllRecord(1); //taking username
             include "view/pricebyday.php";                                        
         }
 

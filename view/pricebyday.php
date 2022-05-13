@@ -47,8 +47,8 @@
                                 while($row = mysqli_fetch_array($result)){
                                     echo "<tr>";
                                         echo "<td>" . $row['Date'] . "</td>";                                        
-                                        echo "<td>" . $row['Min'] . "</td>";
-                                        echo "<td>" . $row['Max'] . "</td>";
+                                        echo "<td>" . $row['Min_price'] . "</td>";
+                                        echo "<td>" . $row['Max_price'] . "</td>";
                                         //echo "<td>" . $row['URL'] . "</td>";
                                         
                                         
