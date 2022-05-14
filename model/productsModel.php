@@ -159,8 +159,6 @@ class productsModel
             try
 			{
                 $this->open_db();
-                $Prod_id=1;
-                //if($User_name!= )
                 if(TRUE)
 				{	
 				$query=$this->condb->prepare('SELECT

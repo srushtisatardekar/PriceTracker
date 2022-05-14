@@ -1,17 +1,6 @@
 <?php
-    echo"testig";
-    // require_once '/config.php';
-    // require_once  '/controller/trackerController.php';
     require_once '/Applications/XAMPP/xamppfiles/htdocs/PT/config.php';
     require_once  '/Applications/XAMPP/xamppfiles/htdocs/PT/controller/trackerController.php';
-    //session_start();  
-    // $this -> wishlist();
-    echo "<a href='wishlist.php?act=wishlist&User_name=". $row['User_name'] ."' title='display wishlist' data-toggle='tooltip'><i class='fa fa-edit'></i></a>";
-
-
-    //session_status() === PHP_SESSION_ACTIVE ? TRUE : session_start();
-    // $controller = new trackerController();
-    // $controller->mvcHandler();          
 ?>
 
 <?php session_unset();?>
@@ -69,7 +58,7 @@
                                         echo "<td>" . $row['Prod_id'] . "</td>";
                                         echo "<td>" . $row['product_description'] . "</td>";
                                         echo "<td>" . $row['Vendor'] . "</td>";
-                                        echo "<td>" . $row['Url'] . "</td>";
+                                        //echo "<td>" . $row['Url'] . "</td>";
 
 
                                         echo "<td>";

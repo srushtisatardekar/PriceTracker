@@ -1,4 +1,6 @@
 <?php session_unset();?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,6 +19,7 @@
     </script>
 </head>
 <body>
+    <h2 class="pull-left"> Wishlist-The Price Tracker</h2>
     <div class="main-wrapper">
         <div class="container-fluid">
             <div class="row">
@@ -24,16 +27,9 @@
                     <div class="page-header clearfix">
                         <!-- <a href="index.php" class="btn btn-success pull-left">Home</a> -->
                         <h2 class="pull-left">Product Details</h2>
-                        <a href="view/wishlist.php" class="btn btn-success pull-right">View My Wishlist</a>
-
+                        <?php echo "<a href='index.php?act=wishlist&User_name=sathya' title='Delete Record' data-toggle='tooltip'>VIEW WISHLIST</a>";?>
                     </div>
-                    <?php
-                    echo "<a href='index.php?act=wishlist&User_name=". '' ."' class="btn btn-success pull-right">View My Wishlist</a>";
-                
-
-                    //echo "<a href='index.php?act=wishlist&User_name=". '' ."' title='display wishlist' data-toggle='tooltip'><i class='fa fa-edit'></i></a>";
-                    //echo "<a href='index.php?act=wishlist title='display wishlist' data-toggle='tooltip'><i class='fa fa-edit'></i></a>";
-
+                    <?php                
                         if($result->num_rows > 0){
                             echo "<table class='table table-bordered table-striped'>";
                                 echo "<thead>";
@@ -42,7 +38,6 @@
                                         echo "<th>Prod_id</th>";
                                         echo "<th>Description</th>";
                                         echo "<th>Vendor</th>";
-                                        //echo "<th>URL</th>";
                                         echo "<th>Action</th>";
                                         
 
@@ -56,19 +51,10 @@
                                         echo "<td>" . $row['Vendor'] . "</td>";
                                         //echo "<td>" . $row['URL'] . "</td>";
                                         echo "<td>";
-                                        echo "<a href='". $row['URL'] ."'> VIEW </a>";
-                                        
-                                        //add below comment to wishlist display page
-                                        //echo "<a href='index.php?act=Track_Hourly&User_name=". $row['User_name'] ."' title='Track Record Hourly' data-toggle='tooltip'><i class='fa fa-edit'></i></a>";
-
-                                        //echo "<a href='pricebyhour.php'title='Track Hourly data' data-toggle='tooltip'><i class='fa fa-edit'></i></a>";
+                                        echo "<a href='". $row['URL'] ."'> VIEW | </a>";
+										echo "<a href='index.php?act=Track_Day' title='View Track by hour' data-toggle='tooltip'>Track By Day |</a>";
+                                        echo "<a href='index.php?act=Track_Day' title='View Track by Hour' data-toggle='tooltip'>Track By Hour |</a>";
                                         echo "</td>";
-                                        
-
-                                        // echo "<td>";
-                                        // echo "<a href='index.php?act=update&id=". $row['id'] ."' title='Update Record' data-toggle='tooltip'><i class='fa fa-edit'></i></a>";
-                                        // echo "<a href='index.php?act=delete&id=". $row['id'] ."' title='Delete Record' data-toggle='tooltip'><i class='fa fa-trash'></i></a>";
-                                        // echo "</td>";
                                     echo "</tr>";
                                 }
                                 echo "</tbody>";                            

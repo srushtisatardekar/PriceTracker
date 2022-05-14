@@ -1,5 +1,4 @@
 <?php session_unset();?>
-<?php include "view/header.php" ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,6 +42,20 @@
                                     echo "</tr>";
                                 echo "</thead>";
                                 echo "<tbody>";
+                                while($row = mysqli_fetch_array($result)){
+                                    echo "<tr>";
+                                        echo "<td>" . $row['date'] . "</td>";                                        
+                                        echo "<td>" . $row['time'] . "</td>";
+                                        echo "<td>" . $row['price'] . "</td>";
+                                        //echo "<td>" . $row['URL'] . "</td>";
+                                        
+                                        
+                                        
+                                        //echo "<a href='pricebyhour.php'title='Track Hourly data' data-toggle='tooltip'><i class='fa fa-edit'></i></a>";
+                                        echo "</td>";
+                                
+                                    echo "</tr>";
+                                }
                                 
                                 echo "</tbody>";                            
                             echo "</table>";

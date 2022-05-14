@@ -19,23 +19,23 @@
 		}
         // mvc handler request
 		public function mvcHandler() 
+	
 		{
 			$act = isset($_GET['act']) ? $_GET['act'] : NULL;
 			switch ($act) 
 			{
-                 case 'Track_Hourly' :                    
-					$this->TrackByHourAll();
-				// 	break;						
-				// case 'Track_Day':
-				// 	$this->TrackByDayAllRecord();
-				// 	break;				
+                case 'Track_Hourly' :                    
+				$this->TrackByHourAll();
+				break;						
+				case 'Track_Day':
+				$this -> TrackByDayAll();
+				break;				
 				case 'wishlist' :					
-					$this -> wishlist();
-				// 	break;								
+				$this -> wishlist();
+				break;								
 				default:
-				//$this->wishlist();
-                   $this->TrackByDayAll();
-				   //$this->TrackByHourAll();
+				$this->list();
+				
 			}
 		}		
         // page redirection
@@ -49,8 +49,6 @@
             include "view/list.php";      //product                                  
         }
 		public function wishlist(){
-			
-			echo "in the function wishlist";
             $result=$this->objsm->selectWishlistRecord("sathya"); //taking username
             include "view/wishlist.php";                                        
         }
