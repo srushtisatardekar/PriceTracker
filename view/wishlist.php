@@ -1,10 +1,7 @@
 <?php
     require_once '/Applications/XAMPP/xamppfiles/htdocs/PT/config.php';
-    require_once  '/Applications/XAMPP/xamppfiles/htdocs/PT/controller/trackerController.php';
+    //require_once  '/Applications/XAMPP/xamppfiles/htdocs/PT/controller/trackerController.php';
 ?>
-
-<?php session_unset();?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,9 +26,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header clearfix">
-                        <a href="index.php" class="btn btn-success pull-left">Home</a>
+                        <a href="index.php" class="btn btn-success pull-left">All Products</a>
                         <h2 class="pull-left">Users's Wishlist</h2>
-                        <a href="" class="btn btn-success pull-right">Your Wishlist</a>
+                       
                     </div>
                     <?php
                         if($result->num_rows > 0){

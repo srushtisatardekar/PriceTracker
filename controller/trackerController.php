@@ -1,11 +1,12 @@
 <?php
     require '/Applications/XAMPP/xamppfiles/htdocs/PT/model/productsModel.php';
     //require 'model/products.php';
+	 
 	require '/Applications/XAMPP/xamppfiles/htdocs/PT/model/wishlist.php';
     
 
     require_once '/Applications/XAMPP/xamppfiles/htdocs/PT/config.php';
-
+	session_start();
     session_status() === PHP_SESSION_ACTIVE ? TRUE : session_start();
     
 	class trackerController 
@@ -21,6 +22,7 @@
 		public function mvcHandler() 
 	
 		{
+			if(isset($_SESSION['User_name']) && !empty($_SESSION['User_name'])){
 			$act = isset($_GET['act']) ? $_GET['act'] : NULL;
 			switch ($act) 
 			{
@@ -37,6 +39,9 @@
 				$this->list();
 				
 			}
+		}else{
+			$this->askLogin();                                      
+		}
 		}		
         // page redirection
 		public function pageRedirect($url)
@@ -49,7 +54,7 @@
             include "view/list.php";      //product                                  
         }
 		public function wishlist(){
-            $result=$this->objsm->selectWishlistRecord("sathya"); //taking username
+            $result=$this->objsm->selectWishlistRecord($_SESSION['User_name']); //taking username
             include "view/wishlist.php";                                        
         }
 
@@ -62,6 +67,10 @@
             $result=$this->objsm->TrackByDayAllRecord(1); //taking username
             include "view/pricebyday.php";                                        
         }
+		public function askLogin(){
+            include "view/login.php";                                        
+        }
+
 
     }
 ?>

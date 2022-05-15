@@ -1,4 +1,5 @@
-<?php session_unset();?>
+<?php //session_unset();
+?>
 
 
 <!DOCTYPE html>
@@ -27,7 +28,8 @@
                     <div class="page-header clearfix">
                         <!-- <a href="index.php" class="btn btn-success pull-left">Home</a> -->
                         <h2 class="pull-left">Product Details</h2>
-                        <?php echo "<a href='index.php?act=wishlist&User_name=sathya' title='Delete Record' data-toggle='tooltip'>VIEW WISHLIST</a>";?>
+                        <?php echo "<a href='index.php?act=wishlist&User_name=".$_SESSION['User_name']."' title='View wishlist' data-toggle='tooltip'>VIEW WISHLIST</a>";?>
+                     <?php echo "<a href='logout.php' tite='logout'>logout</a>";?>
                     </div>
                     <?php                
                         if($result->num_rows > 0){
@@ -52,8 +54,8 @@
                                         //echo "<td>" . $row['URL'] . "</td>";
                                         echo "<td>";
                                         echo "<a href='". $row['URL'] ."'> VIEW | </a>";
-										echo "<a href='index.php?act=Track_Day' title='View Track by hour' data-toggle='tooltip'>Track By Day |</a>";
-                                        echo "<a href='index.php?act=Track_Day' title='View Track by Hour' data-toggle='tooltip'>Track By Hour |</a>";
+										echo "<a href='index.php?act=Track_Day' title='View Track by Day' data-toggle='tooltip'>Track By Day |</a>";
+                                        echo "<a href='index.php?act=Track_Hourly' title='View Track by Hour' data-toggle='tooltip'>Track By Hour |</a>";
                                         echo "</td>";
                                     echo "</tr>";
                                 }

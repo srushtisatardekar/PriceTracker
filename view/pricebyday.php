@@ -1,4 +1,3 @@
-<?php session_unset();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,9 +21,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header clearfix">
-                        <!-- <a href="index.php" class="btn btn-success pull-left">Home</a> -->
+                        <a href="index.php" class="btn btn-success pull-left">All Products</a>
                         <h2 class="pull-left">Product Tracking by Day</h2>
-                        <a href="view/wishlist.php" class="btn btn-success pull-right">View My Wishlist</a>
+                        <?php echo "<a href='index.php?act=wishlist&User_name=".$_SESSION['User_name']."' title='View wishlist' data-toggle='tooltip'>VIEW WISHLIST</a>";?>
 
                     </div>
                     <?php
