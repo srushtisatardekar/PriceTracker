@@ -1,10 +1,11 @@
 <?php
+session_start();
 echo"in logout. please login";
 
-if(isset($_GET['logout'])) {
+    //session_unset();
     session_destroy();
     unset($_SESSION['User_name']);
-    header('Location: index.php');
-}
+    header('Location: http://localhost/PT2/index.php');
+
 
 ?>

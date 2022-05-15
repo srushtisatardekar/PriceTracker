@@ -28,8 +28,9 @@
                     <div class="page-header clearfix">
                         <!-- <a href="index.php" class="btn btn-success pull-left">Home</a> -->
                         <h2 class="pull-left">Product Details</h2>
+
                         <?php echo "<a href='index.php?act=wishlist&User_name=".$_SESSION['User_name']."' title='View wishlist' data-toggle='tooltip'>VIEW WISHLIST</a>";?>
-                     <?php echo "<a href='logout.php' name='logout'>logout</a>";?>
+                     <?php echo "<a href='view/logout.php' name='logout'>logout</a>";?>
                     </div>
                     <?php                
                         if($result->num_rows > 0){
