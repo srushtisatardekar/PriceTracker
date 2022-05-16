@@ -60,13 +60,11 @@
 
                                         echo "<td>";
                                         echo "<a href='". $row['URL'] ."'> VIEW </a>";
-                                        //echo "<a href='index.php?act=add&Prod_id=". $row['Prod_id'] ."' title='Add to wishlist' data-toggle='tooltip'><i class='fa fa-edit'></i></a>";
 
                                         echo "</td>";
                                         
 
                                         echo "<td>";
-                                        // echo "<a href='index.php?act=update&id=". $row['id'] ."' title='Update Record' data-toggle='tooltip'><i class='fa fa-edit'></i></a>";
                                         echo "<a href='index.php?act=delete&Prod_id=".$row['Prod_id']."' title='Delete Record' data-toggle='tooltip'><i class='fa fa-trash'></i></a>";
                                         echo "</td>";
                                     echo "</tr>";
