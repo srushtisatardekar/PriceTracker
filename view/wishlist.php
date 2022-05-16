@@ -1,5 +1,5 @@
 <?php
-    require_once '/Applications/XAMPP/xamppfiles/htdocs/PT/config.php';
+    require_once '/Applications/XAMPP/xamppfiles/htdocs/PT2/config.php';
     //require_once  '/Applications/XAMPP/xamppfiles/htdocs/PT/controller/trackerController.php';
 ?>
 <!DOCTYPE html>
@@ -65,10 +65,10 @@
                                         echo "</td>";
                                         
 
-                                        // echo "<td>";
+                                        echo "<td>";
                                         // echo "<a href='index.php?act=update&id=". $row['id'] ."' title='Update Record' data-toggle='tooltip'><i class='fa fa-edit'></i></a>";
-                                        // echo "<a href='index.php?act=delete&id=". $row['id'] ."' title='Delete Record' data-toggle='tooltip'><i class='fa fa-trash'></i></a>";
-                                        // echo "</td>";
+                                        echo "<a href='index.php?act=delete&Prod_id=".$row['Prod_id']."' title='Delete Record' data-toggle='tooltip'><i class='fa fa-trash'></i></a>";
+                                        echo "</td>";
                                     echo "</tr>";
                                 }
                                 echo "</tbody>";                            

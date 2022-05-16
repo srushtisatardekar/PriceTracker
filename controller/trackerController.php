@@ -1,11 +1,11 @@
 <?php
-    require '/Applications/XAMPP/xamppfiles/htdocs/PT/model/productsModel.php';
-    //require 'model/products.php';
+    require '/Applications/XAMPP/xamppfiles/htdocs/PT2/model/productsModel.php';
+    require 'model/product.php';
 	 
-	require '/Applications/XAMPP/xamppfiles/htdocs/PT/model/wishlist.php';
+	require '/Applications/XAMPP/xamppfiles/htdocs/PT2/model/wishlist.php';
     
 
-    require_once '/Applications/XAMPP/xamppfiles/htdocs/PT/config.php';
+    require_once '/Applications/XAMPP/xamppfiles/htdocs/PT2/config.php';
 	session_start();
     session_status() === PHP_SESSION_ACTIVE ? TRUE : session_start();
     
@@ -34,7 +34,13 @@
 				break;				
 				case 'wishlist' :					
 				$this -> wishlist();
-				break;								
+				break;
+				case 'add' :                    
+				$this->insert($_GET['Prod_id']);
+				break;
+				case 'delete' :					
+					$this -> delete($_GET['Prod_id']);
+					break;																
 				default:
 				$this->list();
 				
@@ -70,6 +76,59 @@
 		public function askLogin(){
             include "view/login.php";                                        
         }
+
+			// add new record
+			public function insert($Prod_id)
+			{
+				try{
+					$prodtb=new product(); 
+						// read form value
+						$prodtb->Prod_id = trim($Prod_id);
+						$prodtb->Wishlist_id = $_SESSION['Wishlist_id'];
+						//call validation
+						//$chk=$this->checkValidation($prodtb);                    
+						//if($chk)
+						//{   
+							//call insert record            
+							$pid = $this->objsm->insertRecord($prodtb);
+							if($pid>0){			
+								
+								echo "Somthing is wrong..., try again.";
+							}else{
+								header("location:index.php?act=wishlist&User_name=".$_SESSION['User_name']);
+								
+							}
+						//}
+					
+				}catch (Exception $e) 
+				{
+					$this->close_db();	
+					throw $e;
+				}
+			}
+			        // delete record
+					public function delete($Prod_id)
+					{ 
+						try
+						{
+							if (isset($Prod_id)) 
+							{
+								$res=$this->objsm->deleteRecord($Prod_id);                
+								if($res){
+									header("location:index.php?act=wishlist&User_name=".$_SESSION['User_name']);
+								}else{
+									echo "Somthing is wrong..., try again.";
+								}
+							}else{
+								echo "Invalid operation.";
+							}
+						}
+						catch (Exception $e) 
+						{
+							$this->close_db();				
+							throw $e;
+						}
+					}
 
 
     }

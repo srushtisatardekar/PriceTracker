@@ -1,4 +1,6 @@
 <?php //session_unset();
+    //$prodtb=isset($_SESSION['sporttbl0'])?unserialize($_SESSION['sporttbl0']):new prod();            
+
 ?>
 
 
@@ -57,6 +59,8 @@
                                         echo "<a href='". $row['URL'] ."'> VIEW | </a>";
 										echo "<a href='index.php?act=Track_Day' title='View Track by Day' data-toggle='tooltip'>Track By Day |</a>";
                                         echo "<a href='index.php?act=Track_Hourly' title='View Track by Hour' data-toggle='tooltip'>Track By Hour |</a>";
+                                        echo "<a href='index.php?act=add&Prod_id=".$row['Prod_id']."' title='Add to wishlist' data-toggle='tooltip'>Add |</a>";
+
                                         echo "</td>";
                                     echo "</tr>";
                                 }

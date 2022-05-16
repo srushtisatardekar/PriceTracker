@@ -32,11 +32,29 @@ class productsModel
     // public function deleteRecord($id){ }
          // select record
     
+         // delete record
+         public function deleteRecord($id)
+         {	
+             try{
+                 $this->open_db();
+                 $query=$this->condb->prepare("DELETE FROM wishlist WHERE Wishlist_id=".$_SESSION['Wishlist_id']." AND Prod_id=?");
+                 $query->bind_param("i",$id);
+                 $query->execute();
+                 $res=$query->get_result();
+                 $query->close();
+                 $this->close_db();
+                 return true;	
+             }
+             catch (Exception $e) 
+             {
+                 $this->closeDb();
+                 throw $e;
+             }		
+         }  
 
 
 
-
-    // select record     
+        // select record     
 		public function selectRecord($Prod_id)
 		{
 			try
@@ -65,7 +83,7 @@ class productsModel
 		}
 
 
-    //display wishlist
+        //display wishlist
         public function selectWishlistRecord($User_name)
 		{
 			try
@@ -199,7 +217,29 @@ class productsModel
 
 
         }
+        // insert record
+		public function insertRecord($obj)
+		{
+			try
+			{	
+				$this->open_db();
+				$query=$this->condb->prepare("INSERT INTO wishlist (Wishlist_id,Prod_id) VALUES (?, ?)");
+				$query->bind_param("ii",$obj->Wishlist_id,$obj->Prod_id);
+				$query->execute();
+				$res= $query->get_result();
+				$last_id=$this->condb->insert_id;
+				$query->close();
+				$this->close_db();
+				return $last_id;
+			}
+			catch (Exception $e) 
+			{
+				$this->close_db();	
+            	throw $e;
+        	}
+		}
+        
 
-    }
-
+    
+}
 ?>

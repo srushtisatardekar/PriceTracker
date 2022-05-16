@@ -57,7 +57,8 @@
 
 
 
-				$query = "select * from customer where User_name='$User_name' and password='$password' ";
+				//$query = "select * from customer where User_name='$User_name' and password='$password' ";
+				$query="select customer.User_name, customer.password, customer_wishlist.Wishlist_id from customer, customer_wishlist where customer.User_name = customer_wishlist.User_name and customer.User_name = '".$User_name."' and customer.password='".$password."'";
 				//echo $query;
 				$query_run = mysqli_query($con,$query);
 				//echo mysql_num_rows($query_run);
@@ -68,6 +69,7 @@
 					$row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
 					
 					$_SESSION['User_name'] = $User_name;
+					$_SESSION['Wishlist_id'] = $row['Wishlist_id'];
                         header("location: index.php");
 					}
 					else
